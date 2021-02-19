@@ -3,6 +3,21 @@ school_district_clustering
 
 A data pipeline for clustering U.S. school districts.
 
+Quick Start Guide
+------------
+
+1. Download the repo to your computer.
+
+2. Type `make create_environment` into the terminal.
+
+3. Type `make data`.
+
+
+These commands will set up the environment for development. Code added to `src/data/make_dataset.py` will be executed by `make data`.
+
+------------
+
+
 Project Organization
 ------------
 
