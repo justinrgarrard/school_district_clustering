@@ -1,7 +1,7 @@
 school_district_clustering
 ==============================
 
-A data pipeline for clustering U.S. school districts
+A data pipeline for clustering U.S. school districts.
 
 Project Organization
 ------------
@@ -53,5 +53,12 @@ Project Organization
 
 
 --------
+
+
+Proposed Data Pipeline Structure
+------------
+![Data Pipeline Visual](references/Data_Pipeline.png)
+------------
+
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
