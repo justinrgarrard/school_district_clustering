@@ -1,0 +1,4 @@
+{
+  "assessment_clean.csv": ["leaid","leaid_num","year","lea_name","fips"],
+  "grad_rates_clean.csv": ["leaid_num","leaid","year","lea_name","fips"]
+}
