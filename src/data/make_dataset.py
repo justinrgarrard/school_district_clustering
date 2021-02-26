@@ -5,6 +5,7 @@ import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
 
+import aggregate_dataset
 import prune_dataset
 
 
@@ -17,16 +18,23 @@ def main(input_filepath, interim_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+    # logger.info('Making final data set from raw data...')
 
-    # TODO: Incorporate raw to interim processing here
+    # Run the file aggregate script
+    logger.info('Combining raw annual files into aggregates...')
+    scan = os.scandir(input_filepath)
+    target_files = [file.name for file in scan if '.zip' in file.name]
+    for file in target_files:
+        aggregate_dataset.joinfiles(logger, input_filepath, file, interim_filepath)
 
     # Run the column drop pruning script
-    logger.info('pruning unneeded columns')
+    logger.info('Pruning unneeded columns')
     scan = os.scandir(interim_filepath)
     target_files = [file.name for file in scan if os.path.isfile(file) and '_clean' in file.name]
     for file in target_files:
-        prune_dataset.prune_data(interim_filepath, file)
+        prune_dataset.prune_data(logger, interim_filepath, file)
+
+    # TODO: Aggregate trimmed files into single entity
 
 
 if __name__ == '__main__':
