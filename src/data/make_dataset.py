@@ -7,7 +7,7 @@ from dotenv import find_dotenv, load_dotenv
 
 import aggregate_dataset
 import prune_dataset
-
+import glue_dataset
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -18,7 +18,7 @@ def main(input_filepath, interim_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    # logger.info('Making final data set from raw data...')
+    logger.info('MAKE DATASET START')
 
     # Run the file aggregate script
     logger.info('Combining raw annual files into aggregates...')
@@ -34,7 +34,9 @@ def main(input_filepath, interim_filepath, output_filepath):
     for file in target_files:
         prune_dataset.prune_data(logger, interim_filepath, file)
 
-    # TODO: Aggregate trimmed files into single entity
+    # Aggregate trimmed files into single entity
+    # glue_dataset.combine_files(logger, interim_filepath, output_filepath)
+    logger.info("MAKE DATASET FINISH")
 
 
 if __name__ == '__main__':
