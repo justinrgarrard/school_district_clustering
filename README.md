@@ -77,3 +77,6 @@ Proposed Data Pipeline Structure
 
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
+
+**Data Documentation:**
+https://educationdata.urban.org/documentation/school-districts.html#overview
