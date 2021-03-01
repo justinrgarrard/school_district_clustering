@@ -1,8 +1,8 @@
 {
-  "assessment_data_clean.csv": ["leaid","year","lea_name","fips"],
-  "grad_rates_data_clean.csv": ["leaid","year"],
-  "enrollment_data_clean.csv": ["leaid", "year"],
+  "assessment_data_clean.csv": ["leaid","year","read_test_num_valid", "read_test_pct_prof_midpt", "math_test_num_valid", "math_test_pct_prof_midpt"],
+  "grad_rates_data_clean.csv": ["leaid","year","grad_rate_midpt"],
+  "enrollment_data_clean.csv": ["leaid", "year", "enrollment"],
   "saipe_data_clean.csv": ["leaid", "year", "district_id", "est_population_total", "est_population_5_17", "est_population_5_17_poverty", "est_population_5_17_poverty_pct", "est_population_5_17_pct"],
-  "finance_data_clean.csv": ["leaid", "year"],
-  "directory_data_clean.csv": ["leaid", "year", "grad_rate_midpt"]
+  "finance_data_clean.csv": ["leaid", "year", "rev_total", "rev_fed_total", "rev_state_total", "rev_local_total", "exp_total", "exp_current_instruction_total", "exp_current_supp_serve_total", "exp_current_other", "exp_nonelsec", "salaries_total", "benefits_employee_total", "debt_longterm_outstand_beg_FY", "enrollment_fall_responsible", "enrollment_fall_school"],
+  "directory_data_clean.csv": ["leaid", "year", "lea_name", "state_leaid", "street_location", "city_location", "state_location", "zip_location", "zip4_location", "fips", "agency_type", "number_of_schools", "county_code", "county_name", "latitude", "longitude", "cbsa", "cbsa_type", "csa", "teachers_total_fte", "staff_total_fte", "spec_ed_students", "english_language_learners", "enrollment", "cmsa"]
 }
