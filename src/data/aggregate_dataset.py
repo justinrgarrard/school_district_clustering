@@ -71,6 +71,10 @@ def joinfiles(logger, input_filepath, zip_filename, output_filepath):
 #assessment_code = pd.read_excel(
     #r"C:\Users\Patrick O'Brien\Desktop\School\Grad School\Spring 2021\DVA\project\data\codebook_districts_edfacts_assessments.xls",
     #sheet_name='values')
-
+#enrollment_clean = enrollment.query('race == 99 and grade == 99 and sex == 99')
+#enrollment_clean = enrollment_clean.drop(['race', 'grade', 'sex'], axis=1)
+#enrollment_clean.to_csv(path_or_buf="enrollment_clean.csv", index=False)
+ 
+    
 if __name__ == '__main__':
    pass
