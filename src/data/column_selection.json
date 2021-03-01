@@ -2,7 +2,7 @@
   "assessment_data_clean.csv": ["leaid","year","lea_name","fips"],
   "grad_rates_data_clean.csv": ["leaid","year"],
   "enrollment_data_clean.csv": ["leaid", "year"],
-  "saipe_data_clean.csv": ["leaid", "year"],
+  "saipe_data_clean.csv": ["leaid", "year", "district_id", "est_population_total", "est_population_5_17", "est_population_5_17_poverty", "est_population_5_17_poverty_pct", "est_population_5_17_pct"],
   "finance_data_clean.csv": ["leaid", "year"],
-  "directory_data_clean.csv": ["leaid", "year"]
+  "directory_data_clean.csv": ["leaid", "year", "grad_rate_midpt"]
 }
