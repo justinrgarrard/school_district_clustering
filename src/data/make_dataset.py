@@ -4,6 +4,7 @@ import click
 import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
+import pandas as pd
 
 import aggregate_dataset
 import prune_dataset
@@ -34,7 +35,20 @@ def main(input_filepath, interim_filepath, output_filepath):
     for file in target_files:
         prune_dataset.prune_data(logger, interim_filepath, file)
 
-    # TODO: Aggregate trimmed files into single entity
+    # Aggregate trimmed files into single entity
+    logger.info('Creating final processed file')
+    scan = os.scandir(interim_filepath)
+    target_files = [file.name for file in scan if os.path.isfile(file) and '_trimmed' in file.name]
+    df = pd.DataFrame()
+    for file in target_files:
+        full_path_filename = os.path.join(interim_filepath, file)
+        df_in = pd.read_csv(full_path_filename)
+        if file != target_files[0]:
+            df = df.merge(df_in, on=["year", "leaid"], how="outer")
+        else:
+            df = df_in
+    final_path = os.path.join(output_filepath, "processed.csv")
+    df.to_csv(final_path, index=False)
 
 
 if __name__ == '__main__':

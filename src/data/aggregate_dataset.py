@@ -12,6 +12,7 @@ import pathlib
 from zipfile import ZipFile
 import pandas as pd
 import glob
+from re import search
 import xlrd
 import pandasql as ps
 
@@ -30,11 +31,23 @@ def joinfiles(logger, input_filepath, zip_filename, output_filepath):
     # Combine the CSV's into a single dataframe
     logger.info("Aggregating csv's...")
     all_files = glob.glob(extracted_dir + "/*.csv")
+    print(all_files)
     li = []
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0)
         li.append(df)
     frame = pd.concat(li, axis=0, ignore_index=True)
+
+    # Dropping excess rows in certain files
+    if search('enrollment_data', all_files[0]):
+        frame = frame.query('race == 99 and grade == 99 and sex == 99')
+    elif search('assessment_data', all_files[0]):
+        frame = frame.query('grade_edfacts == 99 and race == 99 and sex == 99 and lep == 99 and homeless == 99 and '
+                            'migrant == 99 and disability == 99 and econ_disadvantaged == 99 and foster_care == 99 '
+                            'and military_connected == 99')
+    elif search('grad_rates_data', all_files[0]):
+        frame = frame.query('race == 99 and lep == 99 and homeless == 99 and disability == 99 and econ_disadvantaged '
+                            '== 99 and foster_care == 99')
 
     # Output file
     output_filename = zip_filename.replace(".zip", "").replace(" ", "_") + '_clean.csv'
