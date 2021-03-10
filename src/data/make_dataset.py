@@ -43,7 +43,8 @@ def main(input_filepath, interim_filepath, output_filepath):
     for file in target_files:
         full_path_filename = os.path.join(interim_filepath, file)
         df_in = pd.read_csv(full_path_filename)
-        df_in['leaid'] = df_in['leaid'].astype(str)  # Hacky fix to avoid type problems when merging
+        #df_in['leaid'] = df_in['leaid'].astype(int)  # Hacky fix to avoid type problems when merging
+        #df_in = df_in[df_in.leaid.apply(lambda x: x.isnumeric())]
         if file != target_files[0]:
             logger.info(f'Merging {file}...')
             df = df.merge(df_in, on=["year", "leaid"], how="outer")

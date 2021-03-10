@@ -1,8 +1,6 @@
 """
 This program aggregates data for assessment results and graduation rates into one large file
-
 All data taken from https://educationdata.urban.org/documentation/school-districts.html
-
 - Pat O'Brien & jrgarrard
 """
 
@@ -35,6 +33,10 @@ def joinfiles(logger, input_filepath, zip_filename, output_filepath):
     li = []
     for filename in all_files:
         df = pd.read_csv(filename, index_col=None, header=0)
+        df['leaid'] = df['leaid'].astype(str)
+        df = df[df['leaid'].apply(lambda x: x.isnumeric())]
+        df['leaid'] = df['leaid'].astype(int)
+        df = df[df['leaid'] > 0]
         li.append(df)
     frame = pd.concat(li, axis=0, ignore_index=True)
 
@@ -87,7 +89,7 @@ def joinfiles(logger, input_filepath, zip_filename, output_filepath):
 #enrollment_clean = enrollment.query('race == 99 and grade == 99 and sex == 99')
 #enrollment_clean = enrollment_clean.drop(['race', 'grade', 'sex'], axis=1)
 #enrollment_clean.to_csv(path_or_buf="enrollment_clean.csv", index=False)
- 
-    
+
+
 if __name__ == '__main__':
    pass
