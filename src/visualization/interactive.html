@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+  <title>School District Clustering</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" href="#">
+
+  <link rel="stylesheet" type="text/css" href="interactive.css?v={2}">
+  <style></style>
+</head>
+
+<body>
+<h1> United States School Districts</h1>
+<div>
+  <input type="text" name="q" id ="q" placeholder="Search School District">
+  <br>
+  <select name="years" id ="years" placeholder="Select Year">
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
+    <option value="2016">2016</option>
+    <option value="2015">2015</option>
+    <option value="2014">2014</option>
+    <option value="2013">2013</option>
+    <option value="2012">2012</option>
+    <option value="2011">2011</option>
+    <option value="2010">2010</option>
+    <option value="2009">2009</option>
+    <option value="2008">2008</option>
+    <option value="2007">2007</option>
+    <option value="2006">2006</option>
+    <option value="2005">2005</option>
+    <option value="2004">2004</option>
+    <option value="2003">2003</option>
+    <option value="2002">2002</option>
+    <option value="2001">2001</option>
+    <option value="2000">2000</option>
+    <option value="1999">1999</option>
+    <option value="1998">1998</option>
+    <option value="1997">1997</option>
+    <option value="1996">1996</option>
+    <option value="1995">1995</option>
+    <option value="1994">1994</option>
+    <option value="1993">1993</option>
+    <option value="1992">1992</option>
+    <option value="1991">1991</option>
+    <option value="1990">1990</option>
+    <option value="1989">1989</option>
+    <option value="1988">1988</option>
+    <option value="1987">1987</option>
+    <option value="1986">1986</option>
+  </select>
+  <br>
+    <select name="indicators" id ="indicators" placeholder="Select Indicator">
+      <option value="numschools" id ="numschools">Number of Schools</option>
+      <option value="math" id ="math">Math Midpoint Score</option>
+      <option value="eng" id ="eng">English Midpoint Score</option>
+      <option value="totalrev" id ="totalrev">Total Revenue</option>
+      <option value="enroll" id ="enroll">Total Enrollment</option>
+      <option value="teacherfte" id ="teacherfte">Total Teacher FTE</option>
+    </select>
+  <br>
+  <input type="text" name="showamt" id ="showamt" placeholder="Enter number of districts to display">
+    <ul></ul>
+
+</div>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-queue.v3.min.js"></script>
+<script type="text/javascript" src="auto-complete.js"></script>
+<!--<script type="text/javascript" src="lib/d3.v5.min.js"></script>-->
+<!--<script type="text/javascript" src="lib/d3-dsv.min.js"></script>-->
+<script type="text/javascript" src="interactive.js"></script>
+
+
+</body>
