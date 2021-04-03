@@ -92,17 +92,16 @@ def convert_to_model(logger, filepath, input_filename):
 
     # Join the clustered data to the data that couldn't be clustered,
     # creating a label for "null" records which couldn't be categorized
-    # target_file = os.path.join(filepath, input_filename)
-    # logger.info(f'Reading processed data from {target_file}...')
-    # processed_df = pd.read_csv(target_file)
-    #
-    # output = processed_df.join(labeled_feature_dataset, on=['leaid', 'year'], how='outer')
+    target_file = os.path.join(filepath, input_filename)
+    logger.info(f'Reading processed data from {target_file}...')
+    processed_df = pd.read_csv(target_file)
 
+    output = pd.merge(processed_df, labeled_feature_dataset, how="outer")
 
     # Output to file
     output_filename = input_filename.replace('.csv', '_labeled.csv')
     logger.info(f"Outputting to {output_filename}...")
-    labeled_feature_dataset.to_csv(os.path.join(filepath, output_filename), index=False)
+    output.to_csv(os.path.join(filepath, output_filename), index=False)
 
 
 if __name__ == '__main__':
