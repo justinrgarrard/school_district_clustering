@@ -12,3 +12,4 @@ python-dotenv>=0.5.1
 setuptools~=52.0.0
 pandas
 scikit-learn
+statsmodels
