@@ -57,6 +57,28 @@ Another interesting pattern was the strong relationship between reading and math
 
 ***School District Patterns***
 
-We tried a few different modeling techniques to derive some form of meaningful and easily interpreted categories. First was clustering, which, even with normalized features, primarily captured size metrics (number of schools and enrollment). 
+We tried a few different modeling techniques to derive some form of meaningful and easily interpreted categories.
 
-Our second attempt was a decision tree based off of test results. 
+First was **KMeans clustering**, which, even with normalized features, primarily captured size metrics (number of schools and enrollment). Some clusters were significantly larger than others, reflecting the fact that the distribution of schools per district is very uneven (75% 1-5 : 25% 6-1000). One stop-gap measure was to run a second clustering on the largest category. This method showed some promise, but ultimately not enough to warrant pursuing for the final model.
+
+Our second attempt was a **decision tree** based off of test results. The reasoning being that a decision tree would naturally perform splits on the most prominent features in an explainable fashion. As with the clustering, there was a problem of uneven categories. Some leaf nodes consisted of >6,500 records, while others held merely 2.
+
+Next we tried **hierarchical clustering**. The dendrogram visuals produced were particularly interesting. They showed the merging of similar clusters, which could possibly be leveraged to find roughly equivalent cluster sizes. However, the API didn't seem to have much leeway in traversing the dendrogram, instead only allowing access to the leaf nodes.
+
+Finally, we elected to do a **manual stepwise partitioning** by schools per district followed by a **KMeans Clustering**. Each category would contain a roughly equal number of records, and could then be sub-categorized to emphasize patterns among similar districts.
+
+*Manually Decided Categories*
+
+|                       | Single | Small | Mid   | Large |
+| --------------------- | ------ | ----- | ----- | ----- |
+| District School Count | 1      | 2-3   | 4-10  | 11+   |
+| # of Districts (2016) | ~4000  | ~5000 | ~5000 | ~2000 |
+
+
+*Sub-Categories for "Single"*
+
+|                       | A         | B       | C         | D       |
+| --------------------- | --------- | ------- | --------- | ------- |
+| Enrollment 25%-75%    | 1057-1486 | 236-598 | 2437-4018 | 389-761 |
+| # of Districts (2016) | ~1300     | ~2094   | ~54       | ~1564   |
+
