@@ -1,6 +1,8 @@
 """
 This program runs various scripts to convert the processed dataset into a set of features (indicators),
 to be used in modeling.
+
+- jrgarrar
 """
 
 import os
@@ -47,7 +49,7 @@ def remove_flag_features(df):
 def filter_out_factor(df, column_name):
     ## Identify records with null values in column
     bad_records = df[df[column_name].isnull()]
-    bad_records.to_csv(f'missing_{column_name}.csv')
+    # bad_records.to_csv(f'missing_{column_name}.csv')
 
     ## Drop records with null values in column
     df = df[df[column_name].notnull()]
