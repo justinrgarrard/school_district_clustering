@@ -1,0 +1,3 @@
+{
+  "feature_list": ["leaid", "year", "lea_name", "fips", "number_of_schools", "teachers_total_fte", "spec_ed_students", "enrollment_x", "read_test_pct_prof_midpt", "math_test_pct_prof_midpt", "rev_total", "exp_total"]
+}
