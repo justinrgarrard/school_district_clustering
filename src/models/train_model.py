@@ -38,7 +38,7 @@ def main(input_filepath, interim_filepath, output_filepath):
     # get_median_districts.generate_median_file(logger, output_filepath, LABELED_FILENAME, output_filepath)
 
     logger.info('Generating dataset file...')
-    get_vis_filtered_data.generate_vis_data_file(logger, output_filepath, PROCESSED_FILENAME, FEATURES_FILENAME, output_filepath)
+    get_vis_filtered_data.generate_vis_data_file(logger, output_filepath, PROCESSED_FILENAME, LABELED_FILENAME, output_filepath)
 
 
 if __name__ == '__main__':

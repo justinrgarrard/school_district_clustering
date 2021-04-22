@@ -16,9 +16,10 @@ def generate_vis_data_file(logger, input_filepath, processed_filename, labeled_f
     # Read in data
     input_path = os.path.join(input_filepath, processed_filename)
     processed_df = pd.read_csv(input_path)
-
     input_path = os.path.join(input_filepath, labeled_filename)
     labeled_df = pd.read_csv(input_path)
+    ## Logging
+    logger.info(processed_df.shape)
 
     # Build the "coords" table
     ## Drop records with an agency type other than 1 or 2
@@ -28,16 +29,27 @@ def generate_vis_data_file(logger, input_filepath, processed_filename, labeled_f
     ## Only keep records from the latest year
     max_yr = coords_df['year'].max()
     coords_df = coords_df[coords_df['year'] == max_yr]
+    ## Logging
     logger.info(coords_df.shape)
     logger.info(coords_df.columns)
 
     # Build the "test" table
-    # test_df = pd.merge(processed_df, coords_df)
-    # logger.info(test_df.shape)
-    # logger.info(test_df.columns)
+    ## Merge "coords" with the "processed" dataset to get the full scope of years
+    test_df = pd.merge(processed_df, coords_df, how='left')
+    ## Logging
+    logger.info(test_df.shape)
+    logger.info(test_df.columns)
 
     # Build the "out" table
-    out_df = pd.merge(labeled_df, coords_df)
+    ## Merge "test" with the "labeled" dataset to attach cluster labels to outputs
+    # out_df = pd.merge(labeled_df, test_df)
+    out_df = pd.merge(test_df, labeled_df)
+    ## Rename columns as necessary
+    out_df.rename(columns={'latitude': 'lat', 'longitude': 'long', 'lea_name': 'name', 'city_location': 'city',
+                           'state_location': 'state'}, inplace=True)
+
+
+    ## Logging
     logger.info(out_df.shape)
     logger.info(out_df.columns)
 
