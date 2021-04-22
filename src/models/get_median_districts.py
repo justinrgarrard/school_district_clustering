@@ -99,3 +99,7 @@ def generate_median_file(logger, input_filepath, input_filename, output_filepath
 
     output_path = os.path.join(output_filepath, 'median_clusters.csv')
     df2.to_csv(output_path)
+
+
+if __name__ == '__main__':
+    pass
