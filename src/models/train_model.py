@@ -8,6 +8,7 @@ import pandas as pd
 
 import convert_to_model
 import run_regressions
+import get_median_districts
 
 PROCESSED_FILENAME = 'processed_features.csv'
 LABELED_FILENAME = 'processed_features_labeled.csv'
@@ -21,14 +22,18 @@ def main(input_filepath, interim_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    # logger.info('Making final data set from raw data...')
 
     # Convert features into CSV files representing clusters
-    logger.info('Converting features into model...')
-    convert_to_model.convert_to_model(logger, output_filepath, PROCESSED_FILENAME)
+    # logger.info('Converting features into model...')
+    # convert_to_model.convert_to_model(logger, output_filepath, PROCESSED_FILENAME)
 
     # Run regressions on each cluster
-    run_regressions.run_regressions(logger, output_filepath, LABELED_FILENAME, interim_filepath)
+    # logger.info('Running regressions...')
+    # run_regressions.run_regressions(logger, output_filepath, LABELED_FILENAME, interim_filepath)
+
+    # Generate files for visual
+    logger.info('Generating median file...')
+    get_median_districts.generate_median_file(logger, output_filepath, LABELED_FILENAME, output_filepath)
 
 
 if __name__ == '__main__':
