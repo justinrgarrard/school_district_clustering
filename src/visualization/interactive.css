@@ -31,13 +31,49 @@ div.tooltip {
     width: 80px;
     height: 48px;
     padding: 0px;
-    font: 6px sans-serif;
+    font: 7px sans-serif;
     background: lightyellow;
     border: 0px;
     border-radius: 4px;
     pointer-events: none;
     opacity: .5;
 }
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+/* Zebra striping */
+tr:nth-of-type(odd) {
+    background: #eee;
+}
+th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+    cursor: s-resize;
+    background-repeat: no-repeat;
+    background-position: 3% center;
+}
+td, th {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+th.des:after {
+    content: "\21E9";
+}
+
+th.aes:after {
+    content: "\21E7";
+}
+
+.svg-style {
+    background-color: lightblue;
+    display: block;
+    margin: auto;
+}
+
 
 /*.tooltip {*/
 /*    position: absolute;*/

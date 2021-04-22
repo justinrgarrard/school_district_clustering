@@ -11,11 +11,11 @@
 <body>
 <h1> United States School Districts</h1>
 <div>
+  <label>Search School District: </label>
   <input type="text" name="q" id ="q" placeholder="Search School District">
   <br>
+  <label>Select Year: </label>
   <select name="years" id ="years" placeholder="Select Year">
-    <option value="2018">2018</option>
-    <option value="2017">2017</option>
     <option value="2016">2016</option>
     <option value="2015">2015</option>
     <option value="2014">2014</option>
@@ -24,6 +24,8 @@
     <option value="2011">2011</option>
     <option value="2010">2010</option>
     <option value="2009">2009</option>
+    <option value="2018">2018</option>
+    <option value="2017">2017</option>
     <option value="2008">2008</option>
     <option value="2007">2007</option>
     <option value="2006">2006</option>
@@ -49,7 +51,9 @@
     <option value="1986">1986</option>
   </select>
   <br>
+  <label>Select Indicator to Display: </label>
     <select name="indicators" id ="indicators" placeholder="Select Indicator">
+      <option value="cluster" id ="cluster">Cluster</option>
       <option value="numschools" id ="numschools">Number of Schools</option>
       <option value="math" id ="math">Math Midpoint Score</option>
       <option value="eng" id ="eng">English Midpoint Score</option>
@@ -58,7 +62,8 @@
       <option value="teacherfte" id ="teacherfte">Total Teacher FTE</option>
     </select>
   <br>
-  <input type="text" name="showamt" id ="showamt" placeholder="Enter number of districts to display">
+  <label>Enter # of Districts to Display: </label>
+  <input type="text" name="showamt" id ="showamt" placeholder="Enter number of districts to display" value="100">
     <ul></ul>
 
 </div>

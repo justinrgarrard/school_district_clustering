@@ -37,6 +37,11 @@ features:
 model:
 	$(PYTHON_INTERPRETER) src/models/train_model.py data/raw data/interim data/processed
 
+## Make Visual
+visual:
+	# ln -sf data/processed src/visualization/data
+	(cd src/visualization && $(PYTHON_INTERPRETER) -m http.server 8000)
+
 ## Make All
 all: data features model
 
