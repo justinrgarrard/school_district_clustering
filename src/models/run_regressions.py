@@ -12,6 +12,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
 
 PARENT_DIR = pathlib.Path(__file__).parent.absolute()
 
@@ -26,8 +27,9 @@ def filter_out_factor(df, column_name):
     return df
 
 
-def regress_on_df(df, metric):
-    features = df.drop([metric, 'label'], axis=1)
+def regress_on_df(df, metric, ignore_metrics=['read_test_pct_prof_midpt', 'math_test_pct_prof_midpt', 'label', 'number_of_schools']):
+    features = df.drop(ignore_metrics, axis=1)
+    features = features.drop([metric], axis=1)
     labels = df[metric]
 
     # Visualize the resulting model
@@ -53,15 +55,29 @@ def run_regressions(logger, filepath, input_filename, output_filepath):
     # Remove id data
     _, labeled_df = anonymize_df(labeled_df)
 
-    # For each cluster, generate a regression on math test scores
+    # For each cluster, generate a regression on test scores
     # and output to file
     n_clusters = len(np.unique(labeled_df['label']))
-    for i in range(1, n_clusters):
+    subset_data = []
+    for i in range(1, n_clusters+1):
         subset_df = labeled_df[labeled_df['label'] == i]
-        regression_output = regress_on_df(subset_df, 'math_test_pct_prof_midpt')
+        subset_data.append(subset_df)
+        regression_output = regress_on_df(subset_df, 'academic_performance')
         filename = f'regression_{i}.csv'
         with open(os.path.join(output_filepath, filename), 'w+') as f:
+            f.write(subset_df.describe().to_csv())
             f.write(regression_output.as_csv())
+
+    # Generate a box-plot for each metric
+    for col in labeled_df.columns:
+        plot_data = [subset_df[col] for subset_df in subset_data]
+
+        plt.close()
+        plt.style.use('ggplot')
+        plt.figure(figsize=(8, 8))
+        plt.boxplot(plot_data)
+        plt.title(f'{col} Across Categories')
+        plt.savefig(os.path.join(output_filepath, f'{col}_boxplot.png'))
 
 
 if __name__ == '__main__':

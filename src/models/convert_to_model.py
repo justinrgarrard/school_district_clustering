@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler
 
 PARENT_DIR = pathlib.Path(__file__).parent.absolute()
 FEATURE_SELECTION_JSON = os.path.join(PARENT_DIR, 'feature_selection.json')
-
+K = 4
 
 def anonymize_df(df):
     id_cols = ['leaid', 'year', 'lea_name', 'fips']
@@ -27,10 +27,10 @@ def segment_df(df):
     # Place data into four categories, to prevent clustering from emphasizing size
     single_df = df[df['number_of_schools'] == 1]
     
-    small_df = df[(df['number_of_schools'] > 1) & 
+    small_df = df[(df['number_of_schools'] > 1) &
                                    (df['number_of_schools'] <= 3)]
     
-    medium_df = df[(df['number_of_schools'] > 3) & 
+    medium_df = df[(df['number_of_schools'] > 3) &
                                    (df['number_of_schools'] <= 10)]
     
     large_df = df[(df['number_of_schools'] > 10)]
@@ -54,7 +54,7 @@ def build_cluster(df, k=6, random_seed=777):
 def reconstitute_data(df_list, results_list):
     # Map results to dataframe
     for i in range(0, len(df_list)):
-        offset = (4 * i) + 1
+        offset = (K * i) + 1
         df_list[i]['label'] = results_list[i] + offset
 
     # Merge dataframes
@@ -82,13 +82,18 @@ def convert_to_model(logger, filepath, input_filename):
     # Perform clustering
     results = []
     for df in normed_df_list:
-        results.append(build_cluster(df, k=4))
+        results.append(build_cluster(df, k=K))
 
     # Combine outputs into a representation of all clustered data
     labeled_feature_dataset = reconstitute_data(df_list, results)
 
     # Add the identifying information back in
     labeled_feature_dataset = labeled_feature_dataset.join(id_df)
+
+    # normed_df = normalize_df(feature_df)
+    # feature_df['label'] = build_cluster(normed_df, k=8)
+    # feature_df['label'] = feature_df['label'] + 1
+    # labeled_feature_dataset = feature_df.join(id_df)
 
     # Join the clustered data to the data that couldn't be clustered,
     # creating a label for "null" records which couldn't be categorized

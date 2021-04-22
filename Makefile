@@ -30,12 +30,15 @@ data: requirements
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/interim data/processed
 
 ## Make Features
-features: requirements
+features:
 	$(PYTHON_INTERPRETER) src/features/build_features.py data/raw data/interim data/processed
 
 ## Make Model
-model: requirements
+model:
 	$(PYTHON_INTERPRETER) src/models/train_model.py data/raw data/interim data/processed
+
+## Make All
+all: data features model
 
 ## Delete all compiled Python files
 clean:
