@@ -26,16 +26,16 @@ def main(input_filepath, interim_filepath, output_filepath):
     logger = logging.getLogger(__name__)
 
     # Convert features into CSV files representing clusters
-    # logger.info('Converting features into model...')
-    # convert_to_model.convert_to_model(logger, output_filepath, PROCESSED_FILENAME)
+    logger.info('Converting features into model...')
+    convert_to_model.convert_to_model(logger, output_filepath, FEATURES_FILENAME)
 
     # Run regressions on each cluster
-    # logger.info('Running regressions...')
-    # run_regressions.run_regressions(logger, output_filepath, LABELED_FILENAME, interim_filepath)
+    logger.info('Running regressions...')
+    run_regressions.run_regressions(logger, output_filepath, LABELED_FILENAME, interim_filepath)
 
     # Generate files for visual
-    # logger.info('Generating median file...')
-    # get_median_districts.generate_median_file(logger, output_filepath, LABELED_FILENAME, output_filepath)
+    logger.info('Generating median file...')
+    get_median_districts.generate_median_file(logger, output_filepath, LABELED_FILENAME, output_filepath)
 
     logger.info('Generating dataset file...')
     get_vis_filtered_data.generate_vis_data_file(logger, output_filepath, PROCESSED_FILENAME, LABELED_FILENAME, output_filepath)

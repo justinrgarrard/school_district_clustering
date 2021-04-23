@@ -90,11 +90,6 @@ def convert_to_model(logger, filepath, input_filename):
     # Add the identifying information back in
     labeled_feature_dataset = labeled_feature_dataset.join(id_df)
 
-    # normed_df = normalize_df(feature_df)
-    # feature_df['label'] = build_cluster(normed_df, k=8)
-    # feature_df['label'] = feature_df['label'] + 1
-    # labeled_feature_dataset = feature_df.join(id_df)
-
     # Join the clustered data to the data that couldn't be clustered,
     # creating a label for "null" records which couldn't be categorized
     target_file = os.path.join(filepath, input_filename)

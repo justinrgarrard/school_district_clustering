@@ -1,25 +1,32 @@
-school_district_clustering
-==============================
+# School District Clustering
 
-A data pipeline for clustering U.S. school districts.
+### Description
 
-Quick Start Guide
-------------
+This program consists of three parts:
 
-1. Download the repo to your computer.
+* **[Data Pipeline]:** A start-to-finish data pipeline that processes U.S. school district data into an ML-friendly format (`src/data`)
 
-2. Type `make create_environment` into the terminal.
+* **[School District Clustering]:** A clustering script that labels similar school districts (`src/features` and `src/models`)
 
-3. Type `make data`.
+* **[Choropleth]:** An interactive map that can be used to visualize the data (`src/visualization`)
 
 
-These commands will set up the environment for development. Code added to `src/data/make_dataset.py` will be executed by `make data`.
+### Installation
 
-------------
+Using a Linux system with Python 3.x installed, type `make all` into the terminal.
 
 
-Project Organization
-------------
+### Execution
+
+Using a Linux system with Python 3.x installed, type `make visual` into the terminal.
+
+Using a web browser of your choice, navigate to http://localhost:8000/interactive.html
+
+
+### Other Useful Information
+
+--------
+##### Project Organization
 
     ├── LICENSE
     ├── Makefile           <- Makefile with commands like `make data` or `make train`
@@ -70,13 +77,11 @@ Project Organization
 --------
 
 
-Proposed Data Pipeline Structure
-------------
-![Data Pipeline Visual](references/Data_Pipeline.png)
-------------
+##### Data Documentation
 
+https://educationdata.urban.org/documentation/school-districts.html#overview
+
+
+##### Cookiecutter Data Science Template
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
-
-**Data Documentation:**
-https://educationdata.urban.org/documentation/school-districts.html#overview
