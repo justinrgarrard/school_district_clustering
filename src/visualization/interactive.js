@@ -2,7 +2,9 @@ margin = {top: 0, right: 0, bottom: 0, left: 0},
     width = window.innerWidth,
     height = 500;
 
-
+var start = Date.now()
+var end
+var comptime
 var svg1 = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -107,6 +109,7 @@ Promise.all(promises).then(function(data) {
         }
     }
     var appendSelected = function (a){
+
         if (selected != null){
             selected.remove();
             locktip.remove();
@@ -157,7 +160,7 @@ Promise.all(promises).then(function(data) {
         locktip = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0)
-                //  "<br>" + ind_name + ": " + a
+            //  "<br>" + ind_name + ": " + a
             .html(function(){
                 if(ind_val == null){
                     return "<p><strong>" + a.values[0].values[0].name +"</strong><br> " + a.values[0].values[0].city + ", " + a.values[0].values[0].state + "<br>" + "LEAid: " + a.key +"</p>"
@@ -165,11 +168,11 @@ Promise.all(promises).then(function(data) {
                     return "<p><strong>" + a.values[0].values[0].name +"</strong><br> " + a.values[0].values[0].city + ", " + a.values[0].values[0].state + "<br>" + "LEAid: " + a.key +"<br>" + el + ": " + ind_val + "</p>"
                 }
             })
-                //.style("left", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[0] + 55) + "px")
-                //.style("top", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[1] + 155) + "px")
-                .style("left", (d3.event.pageX + 15) + "px")
-                .style("top", (d3.event.pageY - 28) + "px")
-                .style("opacity", .9);
+            //.style("left", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[0] + 55) + "px")
+            //.style("top", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[1] + 155) + "px")
+            .style("left", (d3.event.pageX + 15) + "px")
+            .style("top", (d3.event.pageY - 28) + "px")
+            .style("opacity", .9);
 
         test = d3.select("body").append("div")
             .attr("class", "tooltip")
@@ -265,6 +268,7 @@ Promise.all(promises).then(function(data) {
 
     var someFunction = function (d=null) {
         // Do something...
+        start = Date.now()
         district = document.getElementById('q').value
         year = document.getElementById('years').value
         indicator = document.getElementById('indicators').value
@@ -376,7 +380,7 @@ Promise.all(promises).then(function(data) {
                 })
             })
             arr.sort((a, b) => a[1] - b[1])
-            if ((count / arr.length) > .1) {
+            if ((count / arr.length) > .25) {
                 alert(count / arr.length + " percent of data on this indicator and year is missing.")
             } else if (arr.length == 0) {
                 alert("This indicator does not exist in this year")
@@ -530,11 +534,11 @@ Promise.all(promises).then(function(data) {
                 selection
                     .transition()
                     .duration(10)
-                    .style("opacity", .25)
+                    .style("opacity", .99)
                     .style("fill", "turquoise")
                     .attr("r", function(d) {
-                    //     return 5
-                    // })
+                        //     return 5
+                        // })
                         if (d.color == null) {
                             return "5"
                         } else {
@@ -547,11 +551,11 @@ Promise.all(promises).then(function(data) {
                     })
                 tooltip.transition()
                     .duration(250)
-                    .style("opacity", .9);
+                    .style("opacity", .99);
                 tooltip.html("<p><strong>" + selected.values[0].values[0].name + "</strong><br> " + selected.values[0].values[0].city + ", " + selected.values[0].values[0].state + "<br>" + "LEAid: " + selected.key + "</p>")
                     .style("left", (d3.event.pageX + 15) + "px")
                     .style("top", (d3.event.pageY - 28) + "px")
-                    .style("opacity", .9);
+                    .style("opacity", .99);
             })
             .on("mouseout", function () {
                 const selection = d3.select(this)
@@ -597,8 +601,15 @@ Promise.all(promises).then(function(data) {
             .on("click", function () {
                 someFunction(this.__data__);
             })
+        end = Date.now()
+        comptime = end - start
+        var secs = comptime / 1000
+        //d3.select("body").remove("p")
+        d3.select("p").attr("align","center").text(secs + ' seconds to update')
+
     }
-    plotDistrictsandGradient(nest)
+    //plotDistrictsandGradient(nest)
+    filterDistricts(2016, 'cluster', 1000)
 
 
 
