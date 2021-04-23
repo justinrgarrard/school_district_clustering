@@ -1,5 +1,5 @@
 margin = {top: 0, right: 0, bottom: 0, left: 0},
-    width = 1500,
+    width = window.innerWidth,
     height = 500;
 
 
@@ -7,7 +7,7 @@ var svg1 = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
-    .attr("transform", "translate(" + (margin.left + 320) + "," + margin.top +")")
+    .attr("transform", "translate(" + (margin.left) + "," + margin.top +")")
     //.style('transform', 'translate(50%, 50%)')
     .style("display", "block")
     .style("margin", "auto")
