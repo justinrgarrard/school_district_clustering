@@ -28,10 +28,10 @@ li {
 div.tooltip {
     position: absolute;
     text-align: center;
-    width: 80px;
-    height: 48px;
+    width: 100px;
+    height: 70px;
     padding: 0px;
-    font: 7px sans-serif;
+    font: 9px sans-serif;
     background: lightyellow;
     border: 0px;
     border-radius: 4px;
