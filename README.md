@@ -31,7 +31,7 @@ $ make visual
 
 Then, using a web browser of your choice, navigate to http://localhost:8000/interactive.html
 
-![Visual of Web App](references/map.png)
+![Visual of Web App](references/map.PNG)
 
 
 ### Other Useful Information
