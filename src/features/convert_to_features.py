@@ -88,11 +88,6 @@ def convert_to_features(logger, filepath, input_filename):
 
     # Feature generation
     output = processed_df.copy()
-    # output['leaid'] = processed_df['leaid']
-    # output['year'] = processed_df['year']
-    # output['lea_name'] = processed_df['lea_name']
-    # output['fips'] = processed_df['fips']
-    # output['enrollment'] = processed_df['enrollment_x']
     output['students_per_school'] = processed_df['enrollment_x'] / processed_df['number_of_schools']
     output['students_per_teacher'] = processed_df['enrollment_x'] / processed_df['teachers_total_fte']
     output['spending_per_student'] = processed_df['exp_total'] / processed_df['enrollment_x']

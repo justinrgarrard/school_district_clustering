@@ -20,7 +20,6 @@ def main(input_filepath, interim_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    # logger.info('Making final data set from raw data...')
 
     # Convert processed dataset into features
     logger.info('Converting processed dataset into features...')

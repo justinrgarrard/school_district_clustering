@@ -19,7 +19,6 @@ def main(input_filepath, interim_filepath, output_filepath):
         cleaned data ready to be analyzed (saved in ../processed).
     """
     logger = logging.getLogger(__name__)
-    # logger.info('Making final data set from raw data...')
 
     # Run the file aggregate script
     logger.info('Combining raw annual files into aggregates...')

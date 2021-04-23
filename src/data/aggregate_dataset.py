@@ -62,35 +62,5 @@ def joinfiles(logger, input_filepath, zip_filename, output_filepath):
     shutil.rmtree(extracted_dir)
 
 
-#assessment = joinfiles(
-    #r"C:\Users\Patrick O'Brien\Desktop\School\Grad School\Spring 2021\DVA\project\data\assessment_data")
-
-# grad_rates = joinfiles(
-#     r"C:\Users\Patrick O'Brien\Desktop\School\Grad School\Spring 2021\DVA\project\data\grad_rates_data")
-# print(grad_rates.head())
-# print(grad_rates.describe())
-
-#enrollment = joinfiles(r"C:\Users\Patrick O'Brien\Desktop\School\Grad School\Spring 2021\DVA\project\data\enrollment_data")
-# assessment.to_csv(path_or_buf="assessment.csv", index=False)
-# grad_rates.to_csv(path_or_buf="grad_rates.csv", index=False)
-#enrollment.to_csv(path_or_buf="enrollment.csv", index=False)
-
-#assessment_clean = assessment.query('grade_edfacts == 99 and race == 99 and sex == 99 and lep == 99 and homeless == '
-                                    #'99 and migrant == 99 and disability == 99 and econ_disadvantaged == 99 and '
-                                   # 'foster_care == 99 and military_connected == 99')
-#assessment_clean.to_csv(path_or_buf="assessment_clean.csv", index=False)
-
-# grad_rates_clean = grad_rates.query('race == 99 and lep == 99 and homeless == 99 and disability == 99 and '
-#                                     'econ_disadvantaged == 99 and foster_care == 99')
-
-# grad_rates_clean.to_csv(path_or_buf="grad_rates_clean.csv", index=False)
-#assessment_code = pd.read_excel(
-    #r"C:\Users\Patrick O'Brien\Desktop\School\Grad School\Spring 2021\DVA\project\data\codebook_districts_edfacts_assessments.xls",
-    #sheet_name='values')
-#enrollment_clean = enrollment.query('race == 99 and grade == 99 and sex == 99')
-#enrollment_clean = enrollment_clean.drop(['race', 'grade', 'sex'], axis=1)
-#enrollment_clean.to_csv(path_or_buf="enrollment_clean.csv", index=False)
-
-
 if __name__ == '__main__':
    pass

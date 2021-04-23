@@ -9,11 +9,6 @@ import os
 import pandas as pd
 
 
-# df = pd.read_csv("data/processed_features_labeled.csv")
-# df = df['label'] = df['label'].astype(int)
-# df = df['year'] = df['year'].astype(int)
-
-
 def generate_median_file(logger, input_filepath, input_filename, output_filepath):
     # Read in data
     input_path = os.path.join(input_filepath, input_filename)

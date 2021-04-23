@@ -15,12 +15,23 @@ This program consists of three parts:
 
 Using a Linux system with Python 3.x installed, type `make all` into the terminal.
 
+```bash
+$ make all
+```
+
+***Warning: This process requires a significant amount of memory (~16 GB). If you see "segmentation error" in the output, you may need to close some applications on your system and try again.***
 
 ### Execution
 
 Using a Linux system with Python 3.x installed, type `make visual` into the terminal.
 
-Using a web browser of your choice, navigate to http://localhost:8000/interactive.html
+```bash
+$ make visual
+```
+
+Then, using a web browser of your choice, navigate to http://localhost:8000/interactive.html
+
+![Visual of Web App](references/map.png)
 
 
 ### Other Useful Information
@@ -37,41 +48,27 @@ Using a web browser of your choice, navigate to http://localhost:8000/interactiv
     │   ├── processed      <- The final, canonical data sets for modeling.
     │   └── raw            <- The original, immutable data dump.
     │
-    ├── docs               <- A default Sphinx project; see sphinx-doc.org for details
-    │
-    ├── models             <- Trained and serialized models, model predictions, or model summaries
-    │
     ├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
     │                         the creator's initials, and a short `-` delimited description, e.g.
     │                         `1.0-jqp-initial-data-exploration`.
     │
     ├── references         <- Data dictionaries, manuals, and all other explanatory materials.
     │
-    ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-    │   └── figures        <- Generated graphics and figures to be used in reporting
-    │
     ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
     │                         generated with `pip freeze > requirements.txt`
     │
     ├── setup.py           <- makes project pip installable (pip install -e .) so src can be imported
-    ├── src                <- Source code for use in this project.
-    │   ├── __init__.py    <- Makes src a Python module
-    │   │
-    │   ├── data           <- Scripts to download or generate data
-    │   │   └── make_dataset.py
-    │   │
-    │   ├── features       <- Scripts to turn raw data into features for modeling
-    │   │   └── build_features.py
-    │   │
-    │   ├── models         <- Scripts to train models and then use trained models to make
-    │   │   │                 predictions
-    │   │   ├── predict_model.py
-    │   │   └── train_model.py
-    │   │
-    │   └── visualization  <- Scripts to create exploratory and results oriented visualizations
-    │       └── visualize.py
-    │
-    └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
+    └── src                <- Source code for use in this project.
+        ├── __init__.py    <- Makes src a Python module
+        │
+        ├── data           <- Scripts to download or generate data
+        │
+        ├── features       <- Scripts to turn raw data into features for modeling
+        │
+        ├── models         <- Scripts to train models and then use trained models to make
+        │                     predictions
+        │
+        └── visualization  <- Scripts to create exploratory and results oriented visualizations
 
 
 --------
