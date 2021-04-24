@@ -27,6 +27,7 @@ requirements: test_environment
 
 ## Make Dataset
 data: requirements
+	git lfs pull
 	$(PYTHON_INTERPRETER) src/data/make_dataset.py data/raw data/interim data/processed
 
 ## Make Features
@@ -39,7 +40,6 @@ model:
 
 ## Make Visual
 visual:
-	# ln -sf data/processed src/visualization/data
 	(cd src/visualization && $(PYTHON_INTERPRETER) -m http.server 8000)
 
 ## Make All

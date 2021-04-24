@@ -23,7 +23,7 @@ $ make all
 
 ### Execution
 
-Using a Linux system with Python 3.x installed, type `make visual` into the terminal.
+Using a Linux system with Python 3.x and Git LFS installed, type `make visual` into the terminal.
 
 ```bash
 $ make visual
