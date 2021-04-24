@@ -34,6 +34,11 @@ Then, using a web browser of your choice, navigate to http://localhost:8000/inte
 ![Visual of Web App](references/map.PNG)
 
 
+### Video Demo
+
+A video walkthrough of this process can be found [here](https://youtu.be/RAWda3Gr9kk).
+
+
 ### Other Useful Information
 
 --------
