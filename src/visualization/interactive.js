@@ -170,8 +170,8 @@ Promise.all(promises).then(function(data) {
             })
             //.style("left", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[0] + 55) + "px")
             //.style("top", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[1] + 155) + "px")
-            .style("left", (d3.event.pageX + 15) + "px")
-            .style("top", (d3.event.pageY - 28) + "px")
+            .style("left", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[0] + 15) + "px")
+            .style("top", (projection([a.values[0].values[0].long, a.values[0].values[0].lat])[1] + 180) + "px")
             .style("opacity", .9);
 
         test = d3.select("body").append("div")
@@ -201,7 +201,7 @@ Promise.all(promises).then(function(data) {
 
         keep2 = mapColors(keep2)
         plotDistrictsandGradient(keep2)
-
+        console.log(a)
         var columns1 = [a.values[0].values[0].name + ' - ' + year];
         var rows1 = [['Part of cluster: ' + medians['cluster_name']], [medians['cluster_desc']], ['*Represents ~75% of districts; **25th and 75th percentile of math and reading midpoints']]
         table1 = d3.select('body').append('table').attr("class", "table").style("border-color", "blue").style("border-style", "solid")
